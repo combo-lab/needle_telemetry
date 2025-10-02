@@ -1,7 +1,7 @@
 defmodule NeedleTelemetry.MixProject do
   use Mix.Project
 
-  @version "0.5.1"
+  @version "0.6.0"
   @description "Provides a modular approach for using beam-telemetry packages."
   @source_url "https://github.com/combo-lab/needle_telemetry"
   @changelog_url "https://github.com/combo-lab/needle_telemetry/blob/v#{@version}/CHANGELOG.md"
