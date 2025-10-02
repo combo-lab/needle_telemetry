@@ -40,7 +40,8 @@ defmodule NeedleTelemetry.PollerTest do
                   [
                     [
                       measurements: [
-                        {NeedleTelemetry.PollerTest.MyApp.Cache.TelemetrySpec, :dispatch_stats, []}
+                        {NeedleTelemetry.PollerTest.MyApp.Cache.TelemetrySpec, :dispatch_stats,
+                         []}
                       ],
                       period: 5000
                     ]
@@ -73,7 +74,8 @@ defmodule NeedleTelemetry.PollerTest do
                   [
                     [
                       measurements: [
-                        {NeedleTelemetry.PollerTest.MyApp.Cache.TelemetrySpec, :dispatch_stats, []}
+                        {NeedleTelemetry.PollerTest.MyApp.Cache.TelemetrySpec, :dispatch_stats,
+                         []}
                       ],
                       period: 5000
                     ]

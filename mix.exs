@@ -4,6 +4,7 @@ defmodule NeedleTelemetry.MixProject do
   @version "0.5.1"
   @description "Provides a modular approach for using beam-telemetry packages."
   @source_url "https://github.com/combo-lab/needle_telemetry"
+  @changelog_url "https://github.com/combo-lab/needle_telemetry/blob/v#{@version}/CHANGELOG.md"
 
   def project do
     [
@@ -32,13 +33,12 @@ defmodule NeedleTelemetry.MixProject do
     [
       {:telemetry, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_metrics, "~> 1.0"},
       {:telemetry_metrics_statsd, "~> 0.6", only: [:test]},
-      {:ex_check, "~> 0.15.0", only: [:dev], runtime: false},
+      {:ex_check, ">= 0.0.0", only: [:dev], runtime: false},
       {:credo, ">= 0.0.0", only: [:dev], runtime: false},
       {:dialyxir, ">= 0.0.0", only: [:dev], runtime: false},
-      {:ex_doc, ">= 0.0.0", only: [:dev], runtime: false},
-      {:mix_audit, ">= 0.0.0", only: [:dev], runtime: false}
+      {:ex_doc, ">= 0.0.0", only: [:dev], runtime: false}
     ]
   end
 
@@ -52,8 +52,11 @@ defmodule NeedleTelemetry.MixProject do
 
   defp package do
     [
-      licenses: ["Apache-2.0"],
-      links: %{GitHub: @source_url}
+      licenses: ["MIT"],
+      links: %{
+        GitHub: @source_url,
+        Changelog: @changelog_url
+      }
     ]
   end
 
