@@ -1,13 +1,13 @@
-defmodule CozyTelemetry do
+defmodule NeedleTelemetry do
   @moduledoc """
   Provides a modular approach for using [beam-telemetry](https://github.com/beam-telemetry) packages.
 
   ## Quick Start
 
-  Before running `CozyTelemetry`, you must provide some modules. For example:
+  Before running `NeedleTelemetry`, you must provide some modules. For example:
 
       defmodule MyApp.Cache.TelemetrySpec do
-        use CozyTelemetry.Spec
+        use NeedleTelemetry.Spec
 
         @impl true
         def metrics(_meta) do
@@ -35,7 +35,7 @@ defmodule CozyTelemetry do
 
   Then, set some base configuration within `config/config.exs`:
 
-      config :my_app, CozyTelemetry,
+      config :my_app, NeedleTelemetry,
         meta: [],
         specs: [
           MyApp.Cache.TelemetrySpec
@@ -43,16 +43,16 @@ defmodule CozyTelemetry do
         reporter: {:console, []},
         poller: [period: 10_000]
 
-  Use the application configuration you've already set and include `CozyTelemetry.*` in the list of
+  Use the application configuration you've already set and include `NeedleTelemetry.*` in the list of
   supervised children:
 
       # lib/my_app/application.ex
       def start(_type, _args) do
-        cozy_telemetry_config = Application.fetch_env!(:my_app, CozyTelemetry)
+        needle_telemetry_config = Application.fetch_env!(:my_app, NeedleTelemetry)
 
         children = [
-          {CozyTelemetry.Reporter, cozy_telemetry_config},
-          {CozyTelemetry.Poller, cozy_telemetry_config},
+          {NeedleTelemetry.Reporter, needle_telemetry_config},
+          {NeedleTelemetry.Poller, needle_telemetry_config},
           # ...
         ]
 
@@ -63,23 +63,23 @@ defmodule CozyTelemetry do
 
   The value of option `:meta` is a keyword list, which will be passed as the argument of:
 
-  + callback `metrics/1` of `CozyTelemetry.Spec`.
-  + callback `measurements/1` of `CozyTelemetry.Spec`.
+  + callback `metrics/1` of `NeedleTelemetry.Spec`.
+  + callback `measurements/1` of `NeedleTelemetry.Spec`.
 
-  See `CozyTelemetry.Spec` for more details.
+  See `NeedleTelemetry.Spec` for more details.
 
   ### about option `:specs`
 
   The value of option `:specs` is a list of spec modules.
 
-  See `CozyTelemetry.Spec` for more details.
+  See `NeedleTelemetry.Spec` for more details.
 
   ### about option `:optional_specs`
 
   Same as option `:specs`, but ignore errors when the given spec module is missing.
 
-  > When using `:cozy_telemetry` as a direct dependency, this option is unnecessary.
-  > But, when building a new package on `:cozy_telemetry`, this option is useful for some case,
+  > When using `:needle_telemetry` as a direct dependency, this option is unnecessary.
+  > But, when building a new package on `:needle_telemetry`, this option is useful for some case,
   > such as auto loading measurements modules.
 
   ### about option `:reporter`
@@ -99,6 +99,6 @@ defmodule CozyTelemetry do
 
   """
 
-  defdelegate load_metrics(opts), to: CozyTelemetry.Spec
-  defdelegate load_measurements(opts), to: CozyTelemetry.Spec
+  defdelegate load_metrics(opts), to: NeedleTelemetry.Spec
+  defdelegate load_measurements(opts), to: NeedleTelemetry.Spec
 end

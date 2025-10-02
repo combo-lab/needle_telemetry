@@ -1,4 +1,4 @@
-defmodule CozyTelemetryTest do
+defmodule NeedleTelemetryTest do
   use ExUnit.Case
-  doctest CozyTelemetry
+  doctest NeedleTelemetry
 end

@@ -1,7 +1,7 @@
-defmodule CozyTelemetry.Reporters.Statsd do
+defmodule NeedleTelemetry.Reporters.Statsd do
   @moduledoc false
 
-  @behaviour CozyTelemetry.Reporter
+  @behaviour NeedleTelemetry.Reporter
 
   @reporter_module TelemetryMetricsStatsd
 
@@ -18,7 +18,7 @@ defmodule CozyTelemetry.Reporters.Statsd do
 
     @impl true
     def check_deps() do
-      CozyTelemetry.Reporter.print_missing_package(@reporter_package)
+      NeedleTelemetry.Reporter.print_missing_package(@reporter_package)
       raise "missing dependency - #{inspect(@reporter_package)}"
     end
 

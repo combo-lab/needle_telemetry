@@ -1,4 +1,4 @@
-defmodule CozyTelemetry.Spec do
+defmodule NeedleTelemetry.Spec do
   @moduledoc """
   A behaviour for declaring spec.
 
@@ -6,7 +6,7 @@ defmodule CozyTelemetry.Spec do
   implement this behaviour.
 
       defmodule MyApp.Cache.TelemetrySpec do
-        use CozyTelemetry.Spec
+        use NeedleTelemetry.Spec
 
         @impl true
         def metrics(meta) do
@@ -30,7 +30,7 @@ defmodule CozyTelemetry.Spec do
 
   Then, the declared metrics in above module can be loaded with following configuration:
 
-      config :my_app, CozyTelemetry,
+      config :my_app, NeedleTelemetry,
         meta: [],
         specs: [
           MyApp.Cache.TelemetrySpec
@@ -146,7 +146,7 @@ defmodule CozyTelemetry.Spec do
 
   defp log_metrics_loading(module, count) do
     Logger.debug(fn ->
-      "cozy_telemetry - loading #{count} metrics from #{inspect(module)}"
+      "needle_telemetry - loading #{count} metrics from #{inspect(module)}"
     end)
   end
 
@@ -190,7 +190,7 @@ defmodule CozyTelemetry.Spec do
 
   defp log_measurements_loading(module, count) do
     Logger.debug(fn ->
-      "cozy_telemetry - loading #{count} measurements from #{inspect(module)}"
+      "needle_telemetry - loading #{count} measurements from #{inspect(module)}"
     end)
   end
 end

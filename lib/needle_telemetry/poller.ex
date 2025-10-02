@@ -1,9 +1,9 @@
-defmodule CozyTelemetry.Poller do
+defmodule NeedleTelemetry.Poller do
   @moduledoc """
   The application that fetches measurements periodically.
   """
 
-  alias CozyTelemetry.Spec
+  alias NeedleTelemetry.Spec
 
   @doc """
   Builds a child specifications.

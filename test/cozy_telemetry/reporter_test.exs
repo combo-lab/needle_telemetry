@@ -1,9 +1,9 @@
-defmodule CozyTelemetry.ReporterTest do
+defmodule NeedleTelemetry.ReporterTest do
   use ExUnit.Case
   import ExUnit.CaptureLog
 
   defmodule MyApp.Cache.TelemetrySpec do
-    use CozyTelemetry.Spec
+    use NeedleTelemetry.Spec
 
     @impl true
     def metrics(_meta) do
@@ -22,7 +22,7 @@ defmodule CozyTelemetry.ReporterTest do
                id: Telemetry.Metrics.ConsoleReporter,
                start: {Telemetry.Metrics.ConsoleReporter, :start_link, [[metrics: []]]}
              } ==
-               CozyTelemetry.Reporter.child_spec(
+               NeedleTelemetry.Reporter.child_spec(
                  meta: [name: :demo],
                  specs: [],
                  reporter: {:console, []}
@@ -45,7 +45,7 @@ defmodule CozyTelemetry.ReporterTest do
                     ]
                   ]}
              } =
-               CozyTelemetry.Reporter.child_spec(
+               NeedleTelemetry.Reporter.child_spec(
                  meta: [name: :demo],
                  specs: [MyApp.Cache.TelemetrySpec],
                  reporter: {:console, []}
@@ -56,7 +56,7 @@ defmodule CozyTelemetry.ReporterTest do
       assert_raise ArgumentError,
                    "could not load module YourApp.Repo due to reason :nofile",
                    fn ->
-                     CozyTelemetry.Reporter.child_spec(
+                     NeedleTelemetry.Reporter.child_spec(
                        meta: [name: :demo],
                        specs: [YourApp.Repo],
                        reporter: {:console, []}
@@ -80,7 +80,7 @@ defmodule CozyTelemetry.ReporterTest do
                     ]
                   ]}
              } =
-               CozyTelemetry.Reporter.child_spec(
+               NeedleTelemetry.Reporter.child_spec(
                  meta: [name: :demo],
                  optional_specs: [MyApp.Cache.TelemetrySpec],
                  reporter: {:console, []}
@@ -92,7 +92,7 @@ defmodule CozyTelemetry.ReporterTest do
                id: Telemetry.Metrics.ConsoleReporter,
                start: {Telemetry.Metrics.ConsoleReporter, :start_link, [[metrics: []]]}
              } ==
-               CozyTelemetry.Reporter.child_spec(
+               NeedleTelemetry.Reporter.child_spec(
                  meta: [name: :demo],
                  optional_specs: [YourApp.Repo],
                  reporter: {:console, []}
@@ -104,7 +104,7 @@ defmodule CozyTelemetry.ReporterTest do
                id: TelemetryMetricsStatsd,
                start: {TelemetryMetricsStatsd, :start_link, [[metrics: []]]}
              } ==
-               CozyTelemetry.Reporter.child_spec(
+               NeedleTelemetry.Reporter.child_spec(
                  meta: [name: :demo],
                  specs: [],
                  reporter: {:statsd, []}
@@ -114,7 +114,7 @@ defmodule CozyTelemetry.ReporterTest do
     test "raises and prints error messages when the dependency of optional reporter is missing" do
       fun = fn ->
         assert_raise RuntimeError, "missing dependency - :telemetry_metrics_prometheus", fn ->
-          CozyTelemetry.Reporter.child_spec(
+          NeedleTelemetry.Reporter.child_spec(
             meta: [name: :demo],
             specs: [],
             reporter: {:prometheus, []}

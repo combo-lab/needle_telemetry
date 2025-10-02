@@ -1,8 +1,8 @@
-defmodule CozyTelemetry.PollerTest do
+defmodule NeedleTelemetry.PollerTest do
   use ExUnit.Case
 
   defmodule MyApp.Cache.TelemetrySpec do
-    use CozyTelemetry.Spec
+    use NeedleTelemetry.Spec
 
     @impl true
     def measurements(_meta) do
@@ -25,7 +25,7 @@ defmodule CozyTelemetry.PollerTest do
                     ]
                   ]}
              } ==
-               CozyTelemetry.Poller.child_spec(
+               NeedleTelemetry.Poller.child_spec(
                  meta: [name: :demo],
                  specs: [],
                  poller: [period: 5000]
@@ -40,13 +40,13 @@ defmodule CozyTelemetry.PollerTest do
                   [
                     [
                       measurements: [
-                        {CozyTelemetry.PollerTest.MyApp.Cache.TelemetrySpec, :dispatch_stats, []}
+                        {NeedleTelemetry.PollerTest.MyApp.Cache.TelemetrySpec, :dispatch_stats, []}
                       ],
                       period: 5000
                     ]
                   ]}
              } ==
-               CozyTelemetry.Poller.child_spec(
+               NeedleTelemetry.Poller.child_spec(
                  meta: [name: :demo],
                  specs: [MyApp.Cache.TelemetrySpec],
                  poller: [period: 5000]
@@ -57,7 +57,7 @@ defmodule CozyTelemetry.PollerTest do
       assert_raise ArgumentError,
                    "could not load module YourApp.Repo due to reason :nofile",
                    fn ->
-                     CozyTelemetry.Poller.child_spec(
+                     NeedleTelemetry.Poller.child_spec(
                        meta: [name: :demo],
                        specs: [YourApp.Repo],
                        poller: [period: 5000]
@@ -73,13 +73,13 @@ defmodule CozyTelemetry.PollerTest do
                   [
                     [
                       measurements: [
-                        {CozyTelemetry.PollerTest.MyApp.Cache.TelemetrySpec, :dispatch_stats, []}
+                        {NeedleTelemetry.PollerTest.MyApp.Cache.TelemetrySpec, :dispatch_stats, []}
                       ],
                       period: 5000
                     ]
                   ]}
              } ==
-               CozyTelemetry.Poller.child_spec(
+               NeedleTelemetry.Poller.child_spec(
                  meta: [name: :demo],
                  optional_specs: [MyApp.Cache.TelemetrySpec],
                  poller: [period: 5000]
@@ -98,7 +98,7 @@ defmodule CozyTelemetry.PollerTest do
                     ]
                   ]}
              } ==
-               CozyTelemetry.Poller.child_spec(
+               NeedleTelemetry.Poller.child_spec(
                  meta: [name: :demo],
                  optional_specs: [YourApp.Repo],
                  poller: [period: 5000]

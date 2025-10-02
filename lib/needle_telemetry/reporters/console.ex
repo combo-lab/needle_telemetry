@@ -1,7 +1,7 @@
-defmodule CozyTelemetry.Reporters.Console do
+defmodule NeedleTelemetry.Reporters.Console do
   @moduledoc false
 
-  @behaviour CozyTelemetry.Reporter
+  @behaviour NeedleTelemetry.Reporter
 
   @reporter_module Telemetry.Metrics.ConsoleReporter
 

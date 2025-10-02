@@ -1,13 +1,13 @@
-defmodule CozyTelemetry.MixProject do
+defmodule NeedleTelemetry.MixProject do
   use Mix.Project
 
   @version "0.5.1"
   @description "Provides a modular approach for using beam-telemetry packages."
-  @source_url "https://github.com/cozy-elixir/cozy_telemetry"
+  @source_url "https://github.com/combo-lab/needle_telemetry"
 
   def project do
     [
-      app: :cozy_telemetry,
+      app: :needle_telemetry,
       version: @version,
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,

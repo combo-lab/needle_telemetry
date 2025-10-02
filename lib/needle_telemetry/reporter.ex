@@ -1,4 +1,4 @@
-defmodule CozyTelemetry.Reporter do
+defmodule NeedleTelemetry.Reporter do
   @moduledoc """
   The application which reports metrics.
 
@@ -6,7 +6,7 @@ defmodule CozyTelemetry.Reporter do
   """
 
   require Logger
-  alias CozyTelemetry.Spec
+  alias NeedleTelemetry.Spec
 
   @type init_arg :: keyword()
 
@@ -41,9 +41,9 @@ defmodule CozyTelemetry.Reporter do
   end
 
   @builtin_reporters %{
-    console: CozyTelemetry.Reporters.Console,
-    statsd: CozyTelemetry.Reporters.Statsd,
-    prometheus: CozyTelemetry.Reporters.Prometheus
+    console: NeedleTelemetry.Reporters.Console,
+    statsd: NeedleTelemetry.Reporters.Statsd,
+    prometheus: NeedleTelemetry.Reporters.Prometheus
   }
 
   @builtin_reporter_types Map.keys(@builtin_reporters)
